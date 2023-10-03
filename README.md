@@ -7,7 +7,7 @@ A plugin for Mortal Kombat 1 which allows to change blood color for everyone.
 
 There's 2 versions, standalone and MK1Hook plugin version which allows to use both mods at once.
 
-You can download binary files from [Releases](https://github.com/ermaccer/MK11.BloodCustomizer/releases) page. 
+You can download binary files from [Releases](https://github.com/ermaccer/MK1.BloodCustomizer/releases) page. 
 
 ...EHP.zip is a plugin for MK1Hook.
 
