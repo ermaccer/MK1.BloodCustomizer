@@ -140,6 +140,7 @@
     <ClInclude Include="minhook\src\trampoline.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PluginInfo.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="SDK.h" />
     <ClInclude Include="utils\addr.h" />
     <ClInclude Include="utils\MemoryMgr.h" />
@@ -165,7 +166,11 @@
     <ClCompile Include="utils\Patterns.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\README.md" />
     <None Include="exports.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MK1.BloodCustomizer.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
