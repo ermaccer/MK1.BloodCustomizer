@@ -4,7 +4,7 @@
 #include "utils/MemoryMgr.h"
 #include "utils/Trampoline.h"
 #include "utils/Patterns.h"
-#include "exports.h"
+
 #include "minhook/include/MinHook.h"
 #include "IniReader.h"
 
@@ -139,9 +139,9 @@ extern "C" PLUGIN_API const char* GetPluginTabName()
 }
 
 // Initialization
-extern "C" PLUGIN_API void OnInitialize(HMODULE hMod)
+extern "C" PLUGIN_API void OnInitialize()
 {
-    MK12HOOKSDK::Initialize(hMod);
+    MK12HOOKSDK::Initialize();
     Init();
 }
 
@@ -171,27 +171,22 @@ extern "C" PLUGIN_API void TabFunction()
 
     MK12HOOKSDK::ImGui_Checkbox("Enable##blc", &ms_bEnable);
 
-    if (ms_bEnable)
+    MK12HOOKSDK::ImGui_Separator();
+    MK12HOOKSDK::ImGui_Text("Blood FX is reloaded on each match, not during gameplay.");
+    MK12HOOKSDK::ImGui_Checkbox("Increase Brightness", &ms_bIncreaseBrigthness);
+
+    MK12HOOKSDK::ImGui_Text("Blood Color (Alpha is ignored)");
+    if (MK12HOOKSDK::ImGui_ColorEdit4("Pick RGB", ms_fColors))
     {
-        MK12HOOKSDK::ImGui_Separator();
-        MK12HOOKSDK::ImGui_Text("Blood FX is reloaded on each match, not during gameplay.");
-        MK12HOOKSDK::ImGui_Checkbox("Increase Brightness", &ms_bIncreaseBrigthness);
-
-        MK12HOOKSDK::ImGui_Text("Blood Color (Alpha is ignored)");
-        if (MK12HOOKSDK::ImGui_ColorEdit4("Pick RGB", ms_fColors))
-        {
-            ms_colors[0] = (int)(ms_fColors[0] * 255.0f);
-            ms_colors[1] = (int)(ms_fColors[1] * 255.0f);
-            ms_colors[2] = (int)(ms_fColors[2] * 255.0f);
-        }
-
-        if (MK12HOOKSDK::ImGui_Button("Save Settings"))
-        {
-            SaveINI();
-        }
-        
+        ms_colors[0] = (int)(ms_fColors[0] * 255.0f);
+        ms_colors[1] = (int)(ms_fColors[1] * 255.0f);
+        ms_colors[2] = (int)(ms_fColors[2] * 255.0f);
     }
 
+    if (MK12HOOKSDK::ImGui_Button("Save Settings"))
+    {
+        SaveINI();
+    }
 }
 #endif
 
@@ -204,7 +199,6 @@ BOOL APIENTRY DllMain(HMODULE hModule,
     {
     case DLL_PROCESS_ATTACH:
 #ifndef HOOKPLUGIN
-        LoadOriginalDLL();
         Init();
 #endif
         break;

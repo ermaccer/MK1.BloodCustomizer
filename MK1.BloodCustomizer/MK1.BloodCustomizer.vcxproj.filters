@@ -27,9 +27,6 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="exports.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="IniReader.h">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -83,9 +80,6 @@
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="exports.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="IniReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -115,9 +109,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="exports.def">
-      <Filter>Source Files</Filter>
-    </None>
     <None Include="..\README.md">
       <Filter>Resource Files</Filter>
     </None>

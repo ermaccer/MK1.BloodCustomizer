@@ -25,10 +25,9 @@ bool (*MK12HOOKSDK::ImGui_ColorEdit4)(const char*, float*) = nullptr;
 uintptr_t(*MK12HOOKSDK::GetPattern)(const char*, int) = nullptr;
 int (*MK12HOOKSDK::CreateHook)(LPVOID, LPVOID, LPVOID*) = nullptr;
 
-void MK12HOOKSDK::Initialize(HMODULE hMod)
+void MK12HOOKSDK::Initialize()
 {
-	HMODULE hook = hMod;
-	
+	HMODULE hook = GetModuleHandleW(L"mk1hook.asi");
 	if (!hook)
 	{
 		ms_bIsInitialized = false;

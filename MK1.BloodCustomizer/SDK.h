@@ -37,6 +37,6 @@ public:
 	static uintptr_t (*GetPattern)(const char*, int);
 	static int (*CreateHook)(LPVOID, LPVOID, LPVOID*);
 	static bool ms_bIsInitialized;
-	static void Initialize(HMODULE hMod);
+	static void Initialize();
 	static bool IsOK();
 };
